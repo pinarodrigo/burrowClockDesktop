@@ -38,10 +38,13 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@types/jquery": "^3.3.31",
     "@types/mapbox-gl": "^1.6.3",
     "electron-fix": "^1.1.2",
+    "jquery": "^3.4.1",
     "mapbox-gl": "^1.6.1",
     "rxjs": "~6.4.0",
+    "save": "^2.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

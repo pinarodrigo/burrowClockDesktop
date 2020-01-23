@@ -2,6 +2,7 @@ import { environment } from '../../environments/environment';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { MapboxService } from '../mapbox.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-map',
@@ -19,7 +20,6 @@ export class MapComponent implements OnInit {
   constructor(private mapBoxService: MapboxService) { }
 
   ngOnInit() {
-    console.log("Drawing Map");
     Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
     this.map = new mapboxgl.Map({
       container: 'map',
@@ -33,19 +33,20 @@ export class MapComponent implements OnInit {
       var markers = this.mapBoxService.getMarkers(data);
 
       markers.forEach(marker => {
-        var locationDate = new Date(marker.properties.description*1000);
+        var locationDate = new Date(marker.properties.description * 1000);
         new mapboxgl.Marker()
           .setLngLat(marker.geometry.coordinates)
           .setPopup(new mapboxgl.Popup({ offset: 25 })
-          .setHTML('<h3>' + marker.properties.message + '</h3><p>' + locationDate + '</p>'))
+            .setHTML('<h3>' + marker.properties.message + '</h3><p>' + locationDate + '</p>'))
           .addTo(this.map);
+
+        $("ol").append('<li>' + marker.properties.message + '</li>')
       });
     });
 
-    
+
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
-
     
   }
 }
