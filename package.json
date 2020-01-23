@@ -1,13 +1,31 @@
 {
   "name": "burrow-clock-desktop",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "description": "description",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "npm run build; cp electron.js dist/; ./node_modules/.bin/electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.pinanet.burrowClockDesktop",
+    "files": [
+      "*.js",
+      "dist",
+      "./build/**/*",
+      "./electron.js",
+      "node_modules"
+    ],
+    "mac": {
+      "category": "games"
+    }
   },
   "private": true,
   "dependencies": {
@@ -16,9 +34,13 @@
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@types/mapbox-gl": "^1.6.3",
+    "electron-fix": "^1.1.2",
+    "mapbox-gl": "^1.6.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -28,10 +50,13 @@
     "@angular/cli": "~8.3.23",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^8.9.5",
     "codelyzer": "^5.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^7.1.10",
+    "electron-builder": "^22.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
