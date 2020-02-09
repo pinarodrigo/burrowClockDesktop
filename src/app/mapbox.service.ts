@@ -16,7 +16,9 @@ export class MapboxService {
     Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
   }
 
-  endpoint = 'https://t7bes9gh71.execute-api.eu-central-1.amazonaws.com/dev/position';
+  endpointPositions = 'https://t7bes9gh71.execute-api.eu-central-1.amazonaws.com/dev/position';
+  endpointPOIs = 'https://t7bes9gh71.execute-api.eu-central-1.amazonaws.com/dev/locate/';
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -29,8 +31,17 @@ export class MapboxService {
   }
 
   getData(): Observable<any> {
-    return this.httpService.get(this.endpoint, this.httpOptions).pipe(
+    return this.httpService.get(this.endpointPositions, this.httpOptions).pipe(
       map(this.extractData));
+  }
+
+  getPOIs(): Observable<any> {
+    return this.httpService.get(this.endpointPOIs, this.httpOptions).pipe(
+      map(this.extractData));
+  }
+
+  getPOIfor(name: string) {
+    return "casa";
   }
 
   getMarkers(positions) {

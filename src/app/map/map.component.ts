@@ -28,7 +28,6 @@ export class MapComponent implements OnInit {
       center: [this.lng, this.lat]
     });
 
-
     this.mapBoxService.getData().subscribe((data: {}) => {
       var markers = this.mapBoxService.getMarkers(data);
 
@@ -40,13 +39,13 @@ export class MapComponent implements OnInit {
             .setHTML('<h3>' + marker.properties.message + '</h3><p>' + locationDate + '</p>'))
           .addTo(this.map);
 
-        $("ol").append('<li>' + marker.properties.message + '</li>')
+        $("ol").append('<li>' + marker.properties.message + ' está en ' + this.mapBoxService.getPOIfor(marker.properties.message) + '</li>')
       });
     });
 
 
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
-    
+
   }
 }
