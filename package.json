@@ -41,7 +41,7 @@
     "@types/jquery": "^3.3.31",
     "@types/mapbox-gl": "^1.6.3",
     "electron-fix": "^1.1.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.6.1",
     "rxjs": "~6.4.0",
     "save": "^2.4.0",
